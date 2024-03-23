@@ -1,0 +1,36 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.page{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+   background-color: rgb(19, 18, 48);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.container{
+    height: 45vmin;
+  width: 75vmin;
+  background: linear-gradient(130deg, #64b5f6, #f403e0dc);
+  display: flex;
+  box-shadow: inset 7px 5px 6px 0px rgb(36 30 39 / 67%),
+    inset -6px -6px 6px 0px rgb(36 30 39 / 71%);
+  filter: hue-rotate(4deg);
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+button{
+    height: 25px;
+    width: 70px;
+    border-radius: 14px;
+    background-color: blue;
+}
+
+/* .hide {
+  display: none;
+  opacity: 0;
+} */
