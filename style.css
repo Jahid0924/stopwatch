@@ -6,7 +6,7 @@ body{
     position: absolute;
     height: 100%;
     width: 100%;
-   background-color: rgb(19, 18, 48);
+   background: linear-gradient(145deg, #1f1442, #0a0b11);
    display: flex;
    justify-content: center;
    align-items: center;
@@ -14,11 +14,12 @@ body{
 .container{
     height: 45vmin;
   width: 75vmin;
-  background: linear-gradient(130deg, #64b5f6, #f403e0dc);
+  background: linear-gradient(145deg, #55addd, #0c3a9d);
+box-shadow:  5px 5px 16px #111724,
+             -5px -5px 16px #33476e;
   display: flex;
-  box-shadow: inset 7px 5px 6px 0px rgb(36 30 39 / 67%),
-    inset -6px -6px 6px 0px rgb(36 30 39 / 71%);
-  filter: hue-rotate(4deg);
+ 
+  
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -28,6 +29,22 @@ button{
     width: 70px;
     border-radius: 14px;
     background-color: blue;
+}
+.buttons{
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+.watchbox {
+  text-align: center;
+  width: 30%;
+  border-radius: 18px;
+background: #4187dc;
+box-shadow: inset 6px 6px 16px #193747,
+            inset -6px -6px 16px #235fa8;
+}
+h1{
+  font-size: 0.85rem;
 }
 
   
@@ -50,6 +67,7 @@ button{
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
     /* padding-left: 8px; */
     transition-duration: .5s;
+    
   }
   
   .svgIcon {
