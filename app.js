@@ -45,7 +45,7 @@ let timer = null;
 let startbtn = document.querySelector(".start");
 let pausebtn = document.querySelector(".stop");
 let displaytime = document.querySelector(".display");
-
+let Blinking;
 let display = "hidden";
 
 function counting() {
@@ -66,23 +66,19 @@ function counting() {
 }
 
 function StartWatch() {
-  // if (display === "hidden") {
-  //   display = "shown";
-  //   startbtn.classList.add("hide");
-  //   pausebtn.classList.remove("hide");
-  // } else {
-  //   display = "hidden";
-  //   startbtn.classList.remove("hide");
-  //   pausebtn.classList.add("hide");
-  // }
-
   timer = setInterval(counting, 100);
+  displaytime.classList.remove("blink");
+  clearInterval(Blinking);
 }
 function StopWatch() {
   clearInterval(timer);
+  Blinking = setInterval(() => {
+    displaytime.classList.toggle("blink");
+  }, 500);
 }
 function Reset() {
   clearInterval(timer);
   [mint, sec, msec] = [0, 0, 0];
   displaytime.innerHTML = "00:00:00";
+  clearInterval(Blinking)
 }
