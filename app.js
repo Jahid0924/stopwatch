@@ -1,51 +1,18 @@
-// let [sec, hrs, mint] = [0, 0, 0];
-// let display = document.querySelector(".watch");
-// let timmer = null;
-// function cahnge() {
-//   let sel = document.querySelector("#userdata");
-//   let selectValue = sel.Value;
-//   let parse = parseInt(selectValue);
-//   let span = document.querySelector(".txt");
-//   span.innerHTML = parse;
-// }
-
-// function time() {
-//   sec++;
-//   if (sec == 60) {
-//     sec = 0;
-//     mint++;
-//     if (mint == 60) {
-//       mint = 0;
-//       hrs++;
-//     }
-//   }
-//   let h = hrs < 10 ? "0" + hrs : hrs;
-//   let m = mint < 10 ? "0" + mint : mint;
-//   let s = sec < 10 ? "0" + sec : sec;
-//   display.innerHTML = h + ":" + m + ":" + s;
-// }
-
-// function watch() {
-//   if (timmer !== null) {
-//     clearInterval(timmer);
-//   }
-//   timmer = setInterval(time, 999.9);
-// }
-// function stopwatch() {
-//   clearInterval(timmer);
-// }
-// function reset() {
-//   clearInterval(timmer);
-//   [sec, hrs, mint] = [0, 0, 0];
-//   display.innerHTML = "00" + ":" + "00" + ":" + "00";
-// }
-
 let [mint, sec, msec] = [0, 0, 0];
 let timer = null;
 let startbtn = document.querySelector(".start");
 let pausebtn = document.querySelector(".stop");
+let resetbtn = document.querySelector(".reset");
 let displaytime = document.querySelector(".display");
+let box = document.querySelector(".watchbox");
+let time = document.querySelector("h1");
+let startFrame = document.querySelector(".start i");
+let pauseFrame = document.querySelector(".stop i");
+let svgicon = document.querySelector(".svgIcon")
+let mode = 'visible';
 let Blinking;
+let raotation;
+
 let display = "hidden";
 
 function counting() {
@@ -69,16 +36,56 @@ function StartWatch() {
   timer = setInterval(counting, 100);
   displaytime.classList.remove("blink");
   clearInterval(Blinking);
+  startFrame.classList.add("transitions");
+  startFrame.style.transform = "rotate(360deg)";
+  setTimeout(() => {
+    startbtn.classList.add("hide");
+    pausebtn.classList.remove("hide");
+    pauseFrame.classList.add("transitions");
+  }, 500);
+  
 }
 function StopWatch() {
   clearInterval(timer);
+  if(displaytime.innerHTML == "00:00:00"){
+    clearInterval(Blinking)
+  }
+  else{
+
+ 
   Blinking = setInterval(() => {
-    displaytime.classList.toggle("blink");
-  }, 500);
+    if (mode === "visible") {
+      mode = "invisible";
+      displaytime.classList.add("blink");
+      displaytime.classList.remove("display");
+    } else {
+      mode = "visible";
+      displaytime.classList.add("display");
+      displaytime.classList.remove("blink");
+      
+    }
+  }, 400);
+}
+pauseFrame.style.transform = "rotate(360deg)";
+setTimeout(() => {
+  startbtn.classList.remove("hide");
+  pausebtn.classList.add("hide");
+  startFrame.classList.add("transitions");
+}, 500);
+
 }
 function Reset() {
   clearInterval(timer);
   [mint, sec, msec] = [0, 0, 0];
   displaytime.innerHTML = "00:00:00";
-  clearInterval(Blinking)
+  clearInterval(Blinking);
+  svgicon.classList.toggle("resetrotate");
+  time.classList.remove("blink");
+  displaytime.classList.remove("blink");
+  startbtn.classList.remove("hide");
+  pausebtn.classList.add("hide");
 }
+
+
+
+
